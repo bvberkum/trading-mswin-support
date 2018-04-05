@@ -13,10 +13,8 @@ case "$1" in
 
   name ) printf mt4_equity ;;
 
-  stats | info )
-      echo $1 sh | 
-        c:/Users/IEUser/Downloads/redis-windows-x86-2.8.2400-xp/redis-cli.exe \
-        -p $port
+  stats|info )
+      query $1 || echo "No $1 for $account_nr" >&2
     ;;
 
   config )
@@ -26,23 +24,28 @@ case "$1" in
       echo "graph_args --base 1000 -l 0"
       echo "graph_vlabel EUR"
 
-      for acc in $accounts
+      for account_nr in $accounts
       do
-        account_nr=$acc get_raw_port
-        eval $(port=$raw_port $scriptname info)
-        echo "mt4_equity_${acc}.label $account"
+        get_raw_port
+        eval_query info || echo "No info for $account_nr" >&2
+        echo "mt4_equity_${account_nr}.label $account"
       done
       echo "."
     ;;
 
-  * )
-      for acc in $accounts
+  "" )
+      for account_nr in $accounts
       do
-        account_nr=$acc get_raw_port
-        eval $(port=$raw_port $scriptname stats)
-        echo "mt4_equity_${acc}.value $equity"
+        get_raw_port
+        eval_query stats || echo "No stats for $account_nr" >&2
+        echo "mt4_equity_${account_nr}.value $equity"
       done
       echo "."
+    ;;
+
+  * ) 
+      echo "Illegal munin plugin command '$1'" >&2
+      exit 1
     ;;
 
 esac

@@ -18,29 +18,27 @@ case "$1" in
   name ) printf mt4_account_${account_nr} ;;
 
   stats | info )
-      #echo "Fetching '$1' for '$account_nr' at port '$raw_port'" >&2
-      echo $1 sh | 
-        c:/Users/IEUser/Downloads/redis-windows-x86-2.8.2400-xp/redis-cli.exe \
-        -p $raw_port
+      test -n "$raw_port" || exit 102
+      get_raw_data $1
     ;;
 
   config )
-      eval $($scriptname stats)
-      eval $($scriptname info)
+      eval_query stats || echo "No stats for $account_nr" >&2
+      eval_query info || echo "No info for $account_nr" >&2
 
       echo "graph_title $account_nr $company $trade_mode"
       echo "graph_category finance"
       echo "graph_info Account allocation"
-      echo "graph_args --base 1000"
+      echo "graph_args --base 1000 -l 0"
       echo "graph_vlabel $currency"
 
       echo "equity.label Equity"
       echo "equity.type GAUGE"
       echo "equity.draw AREA"
 
-      echo "profit.label Profit"
-      echo "profit.type GAUGE"
-      echo "profit.draw STACK"
+      echo "floating.label Floating PL"
+      echo "floating.type GAUGE"
+      echo "floating.draw STACK"
 
       echo "balance.label Balance"
       echo "balance.type GAUGE"
@@ -54,10 +52,10 @@ case "$1" in
     ;;
 
   * )
-      eval $($scriptname stats)
+      eval_query stats || echo "No stats for $account_nr" >&2
 
       echo equity.value $equity
-      echo profit.value $profit
+      echo floating.value $(printf -- "$profit" | cut -c2- )
       echo balance.value $balance
       echo free_margin.value $margin_free
 
