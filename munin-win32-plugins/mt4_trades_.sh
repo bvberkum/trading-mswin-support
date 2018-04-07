@@ -4,10 +4,10 @@ set -e
 scriptdir=C:/munin/
 cd "$scriptdir"
 
+scriptpath=~/project/trading/lib/trading-mswin-support
+. $scriptpath/tools/sh/env.sh
+
 basename=mt4_trades_
-. ./env.sh
-scriptname=./$(basename $0)
-. ./lib.sh
 
 account_nr_from_name "$(basename $0 .sh)"
 get_raw_port

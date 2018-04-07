@@ -2,12 +2,10 @@
 set -e
 
 scriptdir=C:/munin/
-scriptname=./mt4_profit.sh
-
 cd "$scriptdir"
 
-. ./env.sh
-. ./lib.sh
+scriptpath=~/project/trading/lib/trading-mswin-support
+. $scriptpath/tools/sh/env.sh
 
 case "$1" in
 

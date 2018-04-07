@@ -4,10 +4,9 @@ set -e
 scriptdir=C:/munin/
 cd "$scriptdir"
 
-. ./env.sh
-. ./lib.sh
+scriptpath=~/project/trading/lib/trading-mswin-support
+. $scriptpath/tools/sh/env.sh
 
-scriptname=./$(basename $0)
 basename=mt4_account_
 
 account_nr_from_name "$(basename $0 .sh)"

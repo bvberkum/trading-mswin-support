@@ -1,0 +1,15 @@
+- type: application/vnd.org.wtwta.project
+  name: trading-mswin-support
+  main: trading-mswin-support
+  id: trading-mswin-support
+
+  #created: 2018-04-01
+  
+  pd-meta:
+    log: log
+
+  repositories:
+    origin: git@github.com:bvberkum/trading-mswin-support.git
+
+  scripts:
+    install: make install

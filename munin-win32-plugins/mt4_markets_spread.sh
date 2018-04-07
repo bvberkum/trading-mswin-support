@@ -4,10 +4,10 @@ set -e
 scriptdir=C:/munin/
 cd "$scriptdir"
 
+scriptpath=~/project/trading/lib/trading-mswin-support
+. $scriptpath/tools/sh/env.sh
+
 basename=mt4_markets_spread_
-. ./env.sh
-scriptname=./$(basename $0)
-. ./lib.sh
 
 case "$1" in
 
