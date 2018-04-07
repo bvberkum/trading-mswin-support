@@ -4,7 +4,7 @@ set -e
 scriptdir=C:/munin/
 cd "$scriptdir"
 
-. /cygdrive/c/profile.sh
+. /cygdrive/c/munin-profile.sh
 scriptpath=~/project/trading/lib/trading-mswin-support
 . $scriptpath/tools/sh/env.sh
 
