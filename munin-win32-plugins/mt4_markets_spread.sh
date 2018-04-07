@@ -9,9 +9,11 @@ scriptpath=~/project/trading/lib/trading-mswin-support
 
 basename=mt4_markets_spread_
 
+#reset_raw_data ticks
+
 case "$1" in
 
-  name ) printf ${basename}${account_nr} ;;
+  name ) printf ${basename} ;;
 
   ticks )
       test -n "$2" || set -- "$1" "$markets"
@@ -19,10 +21,10 @@ case "$1" in
     ;;
 
   config )
-      echo "graph_title Exchange spreads"
+      echo "graph_title Exchange spreads ($company $trade_mode)"
       echo "graph_category finance"
       echo "graph_info "
-      echo "graph_args --base 1000 --units-exponent 0"
+      echo "graph_args --base 1000"
       echo "graph_vlabel x"
     
       for market in $markets_3digits $markets_5digits

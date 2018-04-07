@@ -22,7 +22,7 @@ case "$1" in
     ;;
 
   config )
-      echo "graph_title $account_nr trades PL"
+      echo "graph_title $company $account_nr trades PL $trade_mode"
       echo "graph_category finance"
       echo "graph_info "
       echo "graph_args --base 1000 --units-exponent 0"

@@ -19,7 +19,7 @@ case "$1" in
   config )
       eval_query info || echo "No info for $account_nr" >&2
 
-      echo "graph_title $account_nr $company $trade_mode"
+      echo "graph_title $company $account_nr trades $trade_mode"
       echo "graph_category finance"
       echo "graph_info Trades in $market Market"
       echo "graph_args --base 1000 -l 0"

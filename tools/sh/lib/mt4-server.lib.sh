@@ -33,3 +33,8 @@ get_raw_data()
   test -s ".$account_nr.$cmd" &&
     cat ".$account_nr.$cmd" || rm ".$account_nr.$cmd"
 }
+
+reset_raw_data()
+{
+  TODO newer_than ".$account_nr.$1" || rm ".$account_nr.$1"
+}

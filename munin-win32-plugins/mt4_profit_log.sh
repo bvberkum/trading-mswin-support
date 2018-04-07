@@ -29,7 +29,7 @@ case "$1" in
       do
         get_raw_port
         eval_query info || echo "No info for $acc" >&2
-        echo "mt4_profit_${account_nr}_log.label $account"
+        echo "mt4_profit_${account_nr}_log.label $company $account $trade_mode"
       done
       echo "."
     ;;

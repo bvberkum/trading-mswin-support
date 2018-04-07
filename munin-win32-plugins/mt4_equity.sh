@@ -11,7 +11,7 @@ case "$1" in
 
   name ) printf mt4_equity ;;
 
-  stats|info )
+  stats | info )
       query $1 || echo "No $1 for $account_nr" >&2
     ;;
 
@@ -26,7 +26,7 @@ case "$1" in
       do
         get_raw_port
         eval_query info || echo "No info for $account_nr" >&2
-        echo "mt4_equity_${account_nr}.label $account"
+        echo "mt4_equity_${account_nr}.label $company $account $trade_mode"
       done
       echo "."
     ;;

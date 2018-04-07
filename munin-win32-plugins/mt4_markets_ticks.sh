@@ -19,10 +19,10 @@ case "$1" in
     ;;
 
   config )
-      echo "graph_title Exchange sell price"
+      echo "graph_title Exchange sell price ($company $trade_mode)"
       echo "graph_category finance"
       echo "graph_info "
-      echo "graph_args --base 1000 --units-exponent 0"
+      echo "graph_args --base 1000"
       echo "graph_vlabel x"
     
       for market in $markets

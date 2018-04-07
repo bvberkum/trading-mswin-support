@@ -17,7 +17,6 @@ case "$1" in
     ;;
 
   config )
-
       echo "graph_title Profit/Loss"
       echo "graph_category finance"
       echo "graph_info The floating profit/losses"
@@ -28,7 +27,7 @@ case "$1" in
       do
         get_raw_port
         eval_query info || echo "No info for $acc" >&2
-        echo "mt4_profit_${account_nr}.label $account"
+        echo "mt4_profit_${account_nr}.label $company $account $trade_mode"
       done
       echo "."
     ;;

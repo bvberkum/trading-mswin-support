@@ -25,7 +25,7 @@ case "$1" in
       eval_query stats || echo "No stats for $account_nr" >&2
       eval_query info || echo "No info for $account_nr" >&2
 
-      echo "graph_title $account_nr $company $trade_mode"
+      echo "graph_title $company $account_nr $trade_mode"
       echo "graph_category finance"
       echo "graph_info Account allocation"
       echo "graph_args --base 1000 -l 0"

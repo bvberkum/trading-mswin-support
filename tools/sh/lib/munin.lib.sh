@@ -10,7 +10,6 @@ account_nr_from_name()
   }
 }
 
-
 account_nr_market_from_name()
 {
   suffix="$(echo "$1" | cut -c$(( 1 + ${#basename} ))- )"
