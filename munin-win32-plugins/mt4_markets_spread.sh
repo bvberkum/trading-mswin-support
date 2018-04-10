@@ -21,7 +21,13 @@ case "$1" in
       raw_port=$port get_raw_data $@
     ;;
 
+  info )
+      raw_port=$port get_raw_data $@
+    ;;
+
   config )
+      raw_port=$port eval_query info || echo "No info for $port" >&2
+
       echo "graph_title Exchange spreads ($company $trade_mode)"
       echo "graph_category finance"
       echo "graph_info "

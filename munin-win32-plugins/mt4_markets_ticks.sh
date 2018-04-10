@@ -20,6 +20,8 @@ case "$1" in
     ;;
 
   config )
+      raw_port=$port eval_query info || echo "No info for $port" >&2
+
       echo "graph_title Exchange sell price ($company $trade_mode)"
       echo "graph_category finance"
       echo "graph_info "
