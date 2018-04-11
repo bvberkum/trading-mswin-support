@@ -9,12 +9,22 @@ scriptpath=~/project/trading/lib/trading-mswin-support
 . $scriptpath/tools/sh/env.sh
 
 basename=mt4_markets_spread_
+name=${basename}
+
+case "$(basename $0 .sh)" in ${basename}[0-9]* )
+
+    name="$(basename $0 .sh)"
+    account_nr_from_name "$name"
+    get_raw_port
+    port=$raw_port
+
+  ;; esac
 
 #reset_raw_data ticks
 
 case "$1" in
 
-  name ) printf ${basename} ;;
+  name ) printf ${name} ;;
 
   ticks )
       test -n "$2" || set -- "$1" "$markets"
