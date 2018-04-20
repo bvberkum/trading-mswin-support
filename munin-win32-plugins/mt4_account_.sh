@@ -55,7 +55,14 @@ case "$1" in
       eval_query stats || echo "No stats for $account_nr" >&2
 
       echo equity.value $equity
-      echo floating.value $(printf -- "$profit" | cut -c2- )
+      test "$(printf -- "$profit" | cut -c1 )" = "-" && {
+        # Negative PL, Equity is below balance. Remove sign and plot
+        # floating PL value between.
+        echo floating.value $(printf -- "$profit" | cut -c2- )
+      } || {
+        # Floating PL is included within Equity graph, equity is above balance.
+        echo floating.value 0
+      }
       echo balance.value $balance
       echo free_margin.value $margin_free
 

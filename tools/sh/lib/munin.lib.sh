@@ -1,6 +1,11 @@
 #!/bin/sh
 
 
+one_arg_from_name()
+{
+  arg1="$(echo "$1" | cut -c$(( 1 + ${#basename} ))- )"
+}
+
 account_nr_from_name()
 {
   account_nr="$(echo "$1" | cut -c$(( 1 + ${#basename} ))- )"

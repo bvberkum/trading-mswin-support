@@ -7,10 +7,11 @@ cd "$scriptdir"
 . /cygdrive/c/munin-profile.sh
 scriptpath=~/project/trading/lib/trading-mswin-support
 . $scriptpath/tools/sh/env.sh
+basename=$(basename "$0" .sh)
 
 case "$1" in
 
-  name ) printf mt4_profit ;;
+  name ) printf $basename ;;
 
   stats | info )
       test -n "$raw_port" || exit 102
