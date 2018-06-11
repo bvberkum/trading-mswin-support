@@ -24,7 +24,7 @@ case "$1" in
       for account_nr in $accounts
       do
         echo "$basename${account_nr}.label $account_nr"
-        echo "$basename${account_nr}.type ABSOLUTE"
+        echo "$basename${account_nr}.type GAUGE"
       done
       echo .
     ;;
