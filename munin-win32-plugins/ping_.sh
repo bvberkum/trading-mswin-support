@@ -19,7 +19,7 @@ case "$1" in
   config )
       echo "graph_title Ping times to $arg1"
       echo "graph_category network"
-      echo "graph_info "
+      #echo "graph_info "
       echo "graph_args --base 1000"
       echo "graph_vlabel ms"
 

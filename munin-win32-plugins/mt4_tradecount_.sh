@@ -17,7 +17,7 @@ case "$1" in
   config )
       echo "graph_title Number of trades"
       echo "graph_category finance"
-      echo "graph_info "
+      #echo "graph_info "
       echo "graph_args --base 1000"
       echo "graph_vlabel x"
     
@@ -33,7 +33,7 @@ case "$1" in
       for account_nr in $accounts
       do
         get_raw_port
-        count=$(get_raw_data orders | wc -l | awk '{print $1}')
+        count=$(get_raw_data orders | grep -v '^\s*$' | wc -l | awk '{print $1}')
         echo "$basename${account_nr}.value $count"
       done
       echo .

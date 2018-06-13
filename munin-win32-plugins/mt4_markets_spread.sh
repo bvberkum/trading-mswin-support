@@ -40,7 +40,7 @@ case "$1" in
 
       echo "graph_title Exchange spreads ($company $trade_mode)"
       echo "graph_category finance"
-      echo "graph_info "
+      #echo "graph_info "
       echo "graph_args --base 1000"
       echo "graph_vlabel x"
     
