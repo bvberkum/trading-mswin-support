@@ -42,7 +42,7 @@ case "$1" in
 
       echo "balance.label Balance"
       echo "balance.type GAUGE"
-      echo "balance.draw LINE2"
+      echo "balance.draw LINE1"
 
       echo "free_margin.label Free Margin"
       echo "free_margin.type GAUGE"
